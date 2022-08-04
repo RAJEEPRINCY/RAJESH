@@ -1,4 +1,4 @@
-# OOPS
+# <center>OOPS</center>
 Dart is an object-oriented programming language.The main goal of oops is to reduce programming complexity and do several tasks simultaneously.
 
 > #### The four pillars of oops:
@@ -9,7 +9,7 @@ Dart is an object-oriented programming language.The main goal of oops is to redu
 
 ### <u>Abstraction</u>
 - Abstract class in Dart is defined as those classes which contain one or more than one abstract method.
-- Its main goal is to handle complexity by hidding unnecssary details from the user.
+- Its main goal is to handle complexity by hiding unnecessary  details from the user.
 - In Dart, you can use the ***abstract*** keyword only on classes because abstract methods simply don’t have a body
 
 ```dart
@@ -191,3 +191,141 @@ print(geek_output);
 #### Note:
 
 > It must be noted that Dart doesn’t support multiple callable methods inside a class.
+
+
+# <center> Dart Utilities: </center>
+
+### <u>Date and Time</u>
+
+### <u>ASYNCHRONOUS PROGRAMMING</u>
+
+Asynchronous programming says  ***"Don't wait for us, We will call you back."***.
+
+#### Synchronous Programming:
+
+In Synchronous programming, the program is executed line by line, one at a time. 
+
+```dart
+main() {
+print("First Operation"); 
+print("Second Big Operation"); 
+print("Third Operation"); 
+print("Last Operation"); 
+}
+```
+O/p:
+First Operation.
+Third Operation.
+Last Operation.
+Second Big Operation.
+
+**Disadvantage:**
+Let’s suppose Second Big Operation takes 3 seconds to load then Third Operation and Last Operation need to wait for 3 seconds.
+To solve this issue asynchronous programming is here.
+
+### <u>Asynchronous Programming</u>
+
+In Asynchronous programming, program execution continues to the next line without waiting to complete other work.
+It simply means ***"Don't wait"***.
+
+```dart
+main() {
+print("First Operation");   
+Future.delayed(Duration(seconds:3),()=>print('Second Big Operation'));
+print("Third Operation"); 
+print("Last Operation"); 
+}
+```
+O/p:
+First Operation.
+Second Big Operation.
+Third Operation.
+Last Operation.
+
+### <u>Future In Dart</u>
+In dart, the Future represents a value that is not yet available, that will be available at some time in the future. 
+
+***State Of Future***
+1. Uncompleted
+2. Completed
+
+**Uncompleted** :
+
+When you call an asynchronous function, it returns to an uncompleted future. 
+It means the future is waiting for the function asynchronous operation to finishor to throw an error.
+
+**Completed** :
+
+It can be completed with value or completed with error. 
+Future<int> produces an int value, and Future<String> produces a String value. If the future doesn’t produce any value, then the type of future is Future<void>.
+ 
+
+
+### <u>Async And Await In Dart</u>
+Both async and await keywords provide a declarative way to define an asynchronous function and use their results.
+
+**Important Concept**
+- To define an Asynchronous function, add async before the function body.
+- The await keyword work only in the async function.
+
+ ```dart
+ main() {
+print("Start");
+getData();
+print("End");
+}
+
+void getData() async{
+  String data = await middleFunction();
+  print(data);
+}
+
+Future<String> middleFunction(){
+  return Future.delayed(Duration(seconds:5), ()=> "Hello");
+}
+ ```
+O/p:
+Start
+End
+Hello
+
+
+
+# <center>Exception Handling</center>
+
+**Exception In Dart**:
+An exception is an error that occurs at runtime during program execution. 
+
+```dart
+try {
+.....
+}
+on Exception1 {
+....
+}
+catch Exception2 {
+....
+}
+finally {
+// code that should always execute whether an exception or not.
+}
+```
+
+**Example**:
+
+```dart
+void main() {
+  int a = 12;
+  int b = 0;
+  int res;
+  try {
+    res = a ~/ b;
+  } on UnsupportedError {
+    print('Cannot divide by zero');
+  } catch (ex) {
+    print(ex);
+  } finally {
+    print('Finally block always executed');
+  }
+}
+```
